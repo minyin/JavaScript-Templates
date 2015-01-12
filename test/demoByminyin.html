@@ -1,0 +1,99 @@
+<h1>Status_Title</h1>
+<h3>Status_Description</h3>
+<table>
+	<tr>
+		<td colspan="8">Status_Table_Title</td>
+	</tr>
+	<tr>
+		<td>Device_Id</td>
+		<td>Chip_Info</td>
+		<td>Status</td>
+		<td>Frequency</td>
+		<td>Methods</td>
+		<td>Speed</td>
+		<td>Type</td>
+		<td>Power</td>
+	</tr>
+</table>
+<div id="tmpl_traffic">This is a div</div>
+
+<script src="../js/tmpl.min.js"></script>
+<script type="text/x-tmpl" id="tmpl-demo">
+	<h3>{%=o.title%}</h3>
+	<p>Released under the
+	<a href="{%=o.license.url%}">{%=o.license.name%}</a>.</p>
+	<h4>Features</h4>
+	<ul>
+	{% for (var i=0; i<o.features.length; i++) { %}
+	    <li>{%=o.features[i]%}</li>
+	{% } %}
+	</ul>
+</script>
+
+<script>
+	var data = {
+	    "title": "JavaScript Templates",
+	    "license": {
+	        "name": "MIT license",
+	        "url": "http://www.opensource.org/licenses/MIT"
+	    },
+	    "features": [
+	        "lightweight & fast",
+	        "powerful",
+	        "zero dependencies"
+	    ]
+	};
+	//$dot = $("#tmpl_traffic");
+	//$dot.nextAll().remove();
+	document.getElementById("tmpl_traffic").innerHTML = tmpl("tmpl-demo", data);
+	//$("#tmpl_traffic").innerHTML = tmpl("tmpl-demo", data);
+	//$(tmpl('tmpl-demo', data)).insertAfter($dot)
+</script>
+
+<!--script type="text/x-tmpl" id="tmpl_traffic">
+	{% $.each(o, function(id, it){ %}
+		<tr>
+			<td>{%=id %}</td>
+			<td>{%=it.ChipInfo %}</td>
+			<td>{%=it.LockStatus %}</td>
+			<td>{%=it.Freq %}</td>
+			<td>{%=it.Methods %}</td>
+			<td>{%=it.Speed %}</td>
+			<td>{%=it.Type %}</td>			
+			<td>{%=it.Power %}</td>																				
+		</tr>
+	{% }}) %}
+</script-->
+
+<!--script>
+	var data = {
+    "title": "JavaScript Templates",
+    "license": {
+        "name": "MIT license",
+        "url": "http://www.opensource.org/licenses/MIT"
+    },
+    "data":{
+    	"1":{
+			"ChipInfo": "Qualcomm",
+			"LockStatus": "Lock",
+			"Freq": "1150",
+			"Methods": "Hide",
+			"Speed": "High",
+			"Type": "na",
+			"Power": "300w"
+    	},
+    	"2":{
+	    	"ChipInfo": "Intel",
+	    	"LockStatus": "Not Lock",
+	    	"Freq": "1250",
+	    	"Methods": "Hide",
+	    	"Speed": "High",
+	    	"Type": "ie",
+	    	"Power": "500w"
+    	}
+    }
+};
+	$dot = $('[data-tmpl-replace="tmpl_traffic"]');
+	$dot.nextAll().remove();
+	$(tmpl('tmpl_traffic', data.data)).insertAfter($dot)
+</script-->
